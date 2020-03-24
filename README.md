@@ -41,3 +41,23 @@ Install dependencies using [Conda](https://bioconda.github.io/user/install.html)
 % chmod a+x $HOME/MicroRunQC/bin/*
 % microrunqc.py --help
 ``` 
+
+## Output
+
+Output is a tab delimited file.
+
+| Column        | Description
+|---------------|------------------------------------------------------------------------------------------------------------
+| File	         | 
+| Contigs       | Number of contigs in the de-novo SKESA assembly. Contigs smaller than 200 base-pairs (bp) are not counted.  | 
+| Length        | Total length of all contigs > 200bp. This should approximate the size of the genome for the target organism.|
+| EstCov        | Mean coverage for contigs in the SKESA assembly.
+| N50           | |
+| MedianInsert  | |
+| MeanLength_R1 | |
+| MeanLength_R2 | |
+| MeanQ_R1	     | |
+| MeanQ_R2      | |
+| Scheme        | |
+| ST							     | |
+
