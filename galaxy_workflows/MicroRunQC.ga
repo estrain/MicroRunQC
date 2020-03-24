@@ -1,1 +1,250 @@
-
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "MicroRunQC", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": null, 
+            "errors": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Input dataset collection", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 360
+            }, 
+            "tool_id": null, 
+            "tool_state": "{\"collection_type\": \"list:paired\", \"optional\": false}", 
+            "tool_version": null, 
+            "type": "data_collection_input", 
+            "uuid": "80ab7094-d67b-49de-875d-3deda4f80faa", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "4e122236-c301-4f04-a1a1-b0b32d0ff042"
+                }
+            ]
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/pjbriggs/trimmomatic/trimmomatic/0.38.0", 
+            "errors": null, 
+            "id": 1, 
+            "input_connections": {
+                "readtype|fastq_pair": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Trimmomatic", 
+                    "name": "readtype"
+                }
+            ], 
+            "label": null, 
+            "name": "Trimmomatic", 
+            "outputs": [
+                {
+                    "name": "fastq_out_paired", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "fastq_out_unpaired", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 481, 
+                "top": 360
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionfastq_out_paired": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "fastq_out_paired"
+                }, 
+                "HideDatasetActionfastq_out_unpaired": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "fastq_out_unpaired"
+                }
+            }, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/pjbriggs/trimmomatic/trimmomatic/0.38.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "898b67846b47", 
+                "name": "trimmomatic", 
+                "owner": "pjbriggs", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"operations\": [{\"__index__\": 0, \"operation\": {\"name\": \"MINLEN\", \"__current_case__\": 1, \"minlen\": \"1\"}}], \"__page__\": null, \"output_logs\": \"false\", \"output_err\": \"false\", \"__rerun_remap_job_id__\": null, \"readtype\": {\"single_or_paired\": \"collection\", \"fastq_pair\": {\"__class__\": \"RuntimeValue\"}, \"__current_case__\": 2}, \"illuminaclip\": {\"do_illuminaclip\": \"false\", \"__current_case__\": 1}}", 
+            "tool_version": "0.38.0", 
+            "type": "tool", 
+            "uuid": "fa85c21f-ba30-4c1f-9ea3-763fcf21e729", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/estrain/microrunqc/microrunqc/0.0.1", 
+            "errors": null, 
+            "id": 2, 
+            "input_connections": {
+                "jobtype|coll": {
+                    "id": 1, 
+                    "output_name": "fastq_out_paired"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool microrunqc", 
+                    "name": "jobtype"
+                }
+            ], 
+            "label": null, 
+            "name": "microrunqc", 
+            "outputs": [
+                {
+                    "name": "results.skesa.fasta", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "results.mlst.tsv", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "qc_results.tsv", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 839.5, 
+                "top": 315.5
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/estrain/microrunqc/microrunqc/0.0.1", 
+            "tool_shed_repository": {
+                "changeset_revision": "a53acd38d77e", 
+                "name": "microrunqc", 
+                "owner": "estrain", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"options\": {\"__current_case__\": 1, \"select\": \"basic\"}, \"jobtype\": {\"coll\": {\"__class__\": \"RuntimeValue\"}, \"__current_case__\": 1, \"select\": \"fastq_pair\"}}", 
+            "tool_version": "0.0.1", 
+            "type": "tool", 
+            "uuid": "9342a3b3-b56c-4a98-9f6c-7b1f053f0ec5", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "results.skesa.fasta", 
+                    "uuid": "f8f6fa11-c7f0-43dd-b035-f518203898b5"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "results.mlst.tsv", 
+                    "uuid": "dc0ea042-7e58-4410-b336-99607e60ac35"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "qc_results.tsv", 
+                    "uuid": "e12a424f-6665-4a6e-ad2d-6feae6a3d433"
+                }
+            ]
+        }, 
+        "3": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/artbio/concatenate_multiple_datasets/cat_multi_datasets/1.2.0", 
+            "errors": null, 
+            "id": 3, 
+            "input_connections": {
+                "global_condition|inputs": {
+                    "id": 2, 
+                    "output_name": "qc_results.tsv"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Concatenate multiple datasets", 
+                    "name": "global_condition"
+                }
+            ], 
+            "label": null, 
+            "name": "Concatenate multiple datasets", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 1172, 
+                "top": 345
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/artbio/concatenate_multiple_datasets/cat_multi_datasets/1.2.0", 
+            "tool_shed_repository": {
+                "changeset_revision": "62aebaf6cfa0", 
+                "name": "concatenate_multiple_datasets", 
+                "owner": "artbio", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": null, \"dataset_names\": \"false\", \"__rerun_remap_job_id__\": null, \"global_condition\": {\"input_type\": \"singles\", \"__current_case__\": 0, \"inputs\": {\"__class__\": \"RuntimeValue\"}}, \"headers\": \"0\", \"input\": {\"__class__\": \"ConnectedValue\"}}", 
+            "tool_version": "1.2.0", 
+            "type": "tool", 
+            "uuid": "52eae6ac-72ff-44c0-9cb7-feb750b619e7", 
+            "workflow_outputs": []
+        }, 
+        "4": {
+            "annotation": "", 
+            "content_id": "Filter1", 
+            "errors": null, 
+            "id": 4, 
+            "input_connections": {
+                "input": {
+                    "id": 3, 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Filter", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 1495, 
+                "top": 346
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "Filter1", 
+            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"__rerun_remap_job_id__\": null, \"header_lines\": \"1\", \"cond\": \"c1!='File'\", \"__page__\": null}", 
+            "tool_version": "1.1.0", 
+            "type": "tool", 
+            "uuid": "affeb974-5002-426a-a114-e1c6f1bf0aec", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "out_file1", 
+                    "uuid": "b15cb29e-296d-4a61-b843-e9395beafd28"
+                }
+            ]
+        }
+    }, 
+    "tags": [], 
+    "uuid": "076fda71-00cb-445e-9eb8-9a0775e52950", 
+    "version": 3
+}
