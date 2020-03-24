@@ -38,15 +38,15 @@ rtread=rread.replace(".fastq.",".trimmed.fastq.")
 ## Trimmomatic to remove zero length reads.  These cause fastq-scan to crash.
 ## Usually a very small number of reads, results of trimming are not reported.
 
-cmd1 = ["trimmomatic","SE","-threads",str(args.cores),"-phred33",fread,ftread,"MINLEN:1"]
-cmd2 = ["trimmomatic","SE","-threads",str(args.cores),"-phred33",rread,rtread,"MINLEN:1"]
+cmd1 = ["trimmomatic","SE","-threads",str(args.cores[0]),"-phred33",fread,ftread,"MINLEN:1"]
+cmd2 = ["trimmomatic","SE","-threads",str(args.cores[0]),"-phred33",rread,rtread,"MINLEN:1"]
 
 subprocess.call(cmd1)
 subprocess.call(cmd2)
 
 ## Run skesa to produce de novo assemblies
 
-seqfiles = "".join([fread,",",rread])
+seqfiles = "".join([ftread,",",rtread])
 contigs = "".join([args.output[0],".fasta"])
 cmd = ["skesa","--fastq",seqfiles,"--contigs_out",contigs]
 
@@ -58,15 +58,15 @@ subprocess.call(cmd)
 
 ## bwa is used to get the median insert size
 
-cmd1 = ["bwa","mem","-t",str(args.cores),contigs,fread,rread]
-cmd2 = ["python","median_size.py"]
+cmd1 = ["bwa","mem","-t",str(args.cores[0]),contigs,ftread,rtread]
+cmd2 = ["median_size.py"]
 
 pcmd1 = subprocess.Popen(cmd1,stdout= subprocess.PIPE,shell=False)
 pcmd2 = subprocess.Popen(cmd2,stdin=pcmd1.stdout,stdout=subprocess.PIPE,shell=False).communicate()[0]
 insert = pcmd2.decode('utf-8')
 
 mlstout = "".join([args.output[0],".mlst.tsv"])
-cmd = ["mlst","--nopath","--threads",str(args.cores),contigs]
+cmd = ["mlst","--nopath","--threads",str(args.cores[0]),contigs]
 pcmd = subprocess.Popen(cmd,stdout=subprocess.PIPE,shell=False).communicate()[0]
 mlstprofile = pcmd.decode('utf-8')
 mlstprofile = mlstprofile.rstrip()
@@ -75,9 +75,9 @@ output.write(mlstprofile)
 output.close()
 
 fqout = "".join([args.output[0],".fq"])
-cmd = ["python","run_fastq_scan.py","--fastq",fread,rread,"--out",fqout,"--type",args.fqtype]
+cmd = ["run_fastq_scan.py","--fastq",ftread,rtread,"--out",fqout,"--type",args.fqtype]
 returned_value = subprocess.call(cmd)  # returns the exit code in unix
 
 sumout = "".join([args.output[0],"_qc.txt"])
-cmd = ["python","sum_mlst.py","--fasta",contigs,"--mlst",mlstout,"--med",insert,"--fqscan",fqout,"--out",sumout]
+cmd = ["sum_mlst.py","--fasta",contigs,"--mlst",mlstout,"--med",insert,"--fqscan",fqout,"--out",sumout]
 returned_value = subprocess.call(cmd) 
