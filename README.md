@@ -19,11 +19,12 @@ Install dependencies using [Conda](https://bioconda.github.io/user/install.html)
 % conda install -c conda-forge -c bioconda -c defaults mlst skesa trimmomatic bwa fastq-scan
 ```
 
-## Install from source
+## Ugly install from source
 
 ```
 % cd $HOME
 % git clone https://github.com/estrain/MicroRunQC.git
 % export PATH=$PATH:$HOME/MicroRunQC/bin
+% chmod a+x $HOME/MicroRunQC/bin/*
 % microrunqc.py --help
 ``` 
