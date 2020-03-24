@@ -24,5 +24,6 @@ Install dependencies using [Conda](https://bioconda.github.io/user/install.html)
 ```
 % cd $HOME
 % git clone https://github.com/estrain/MicroRunQC.git
-% $HOME/MicroRunQC/bin/microrunqc.py --help
+% export PATH=$PATH:$HOME/MicroRunQC/bin
+% microrunqc.py --help
 ``` 
