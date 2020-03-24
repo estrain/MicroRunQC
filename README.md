@@ -14,6 +14,11 @@ Generate Metrics and Summary Statistics for Bacterial WGS
 * [fastq-scan](https://github.com/rpetit3/fastq-scan)
   * reads a FASTQ and outputs summary statistics (read lengths, per-read qualities, per-base qualities)
   
+Create conda environment
+```
+% conda conda create --name microrunqc
+% conda activate microrunqc
+```
 Install dependencies using [Conda](https://bioconda.github.io/user/install.html) and [Bioconda](https://bioconda.github.io/)
 ```
 % conda install -c conda-forge -c bioconda -c defaults mlst skesa trimmomatic bwa fastq-scan
