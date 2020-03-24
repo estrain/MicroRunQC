@@ -16,7 +16,7 @@ Generate Metrics and Summary Statistics for Bacterial WGS
   
 Create conda environment.
 ```
-% conda conda create --name microrunqc
+% conda create --name microrunqc
 % conda activate microrunqc
 ```
 Install dependencies using [Conda](https://bioconda.github.io/user/install.html) and [Bioconda](https://bioconda.github.io/)
