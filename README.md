@@ -48,16 +48,16 @@ Output is a tab delimited file.
 
 | Column        | Description
 |---------------|------------------------------------------------------------------------------------------------------------
-| File	         | 
+| File	         | Input filename for skesa, taken from forward read. |
 | Contigs       | Number of contigs in the de-novo SKESA assembly. Contigs smaller than 200 base-pairs (bp) are not counted.  | 
 | Length        | Total length of all contigs > 200bp. This should approximate the size of the genome for the target organism.|
-| EstCov        | Mean coverage for contigs in the SKESA assembly.
-| N50           | |
-| MedianInsert  | |
-| MeanLength_R1 | |
-| MeanLength_R2 | |
-| MeanQ_R1	     | |
-| MeanQ_R2      | |
-| Scheme        | |
-| ST							     | |
-
+| EstCov        | Mean coverage for contigs in the assembly as reported by SKESA. |
+| N50           | Sequence length of the shortest contig at 50% of the total genome length. |
+| MedianInsert  | Distance between forward and reverse reads. Calculated by mapping reads to SKESA assembly using bwa.|
+| MeanLength_R1 | Mean length of forward read. |
+| MeanLength_R2 | Mean length of reverse read. |
+| MeanQ_R1	     | Mean Q-score of forward read. |
+| MeanQ_R2      | Mean Q-score of reverse read. |
+| Scheme        | [PubMLST](https://pubmlst.org) database scheme (e.g. senterica for Salmonella enterica) |
+| ST							     | Sequence Type |
+| Loci          | gene (allele number) – for example aroC(118) |
