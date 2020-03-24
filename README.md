@@ -1,7 +1,15 @@
 # MicroRunQC
-Generate Metrics and Summary Statistics for Bacterial WGS
+Generate Metrics and Summary Statistics for paired-end Illumina Bacterial Whole-Genome Sequencing (WGS) fastq data. The pipeline was originally developed on the [Galaxy](https://github.com/estrain/MicroRunQC/blob/master/galaxy_workflows/MicroRunQC.ga) platform and the workflow is made available.  
 
-## Dependencies 
+## Galaxy installation and setup
+
+Install tools below from the [Galaxy Tool Shed](https://toolshed.g2.bx.psu.edu/) 
+* trimmomatic
+* microrunqc
+
+Import the [MicroRunQC](https://github.com/estrain/MicroRunQC/blob/master/galaxy_workflows/MicroRunQC.ga) workflow. 
+
+## Dependencies for local installation
 
 * [SKESA](https://github.com/ncbi/SKESA)
   * Strategic k-mer extension for scrupulous assemblies
