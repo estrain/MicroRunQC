@@ -1,4 +1,4 @@
-#!/usr/bin/env
+#!/usr/bin/env python
 
 ## Generate basic summary stats from SKESA, fastq-scan, and MLST output.
 ## author: errol strain, estrain@gmail.com

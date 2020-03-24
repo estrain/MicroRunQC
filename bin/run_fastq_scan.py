@@ -1,4 +1,4 @@
-#!/usr/bin/env
+#!/usr/bin/env python
 
 ## Run fastq-scan to get mean read length and mean quality score  
 ## author: errol strain, estrain@gmail.com

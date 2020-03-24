@@ -1,4 +1,4 @@
-#!/usr/bin/env
+#!/usr/bin/env python
 
 ## Errol Strain (estrain@gmail.com)
 ## calculate median insert size from sam file
