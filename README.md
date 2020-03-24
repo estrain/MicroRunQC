@@ -43,7 +43,7 @@ Install dependencies using [Conda](https://bioconda.github.io/user/install.html)
 ``` 
 ## Example
 
-% microrunqc.py --forward forward_L001_R1_001.fastq.gz --reverse reverse_L001_R2_001.fastq.gz --cores 12 --output example
+% microrunqc.py --forward forward.fastq.gz --reverse reverse.fastq.gz --cores 12 --output example
 
 ## Output
 
