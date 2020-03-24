@@ -7,7 +7,7 @@ Install tools below from the [Galaxy Tool Shed](https://toolshed.g2.bx.psu.edu/)
 * trimmomatic
 * microrunqc
 
-Import the [MicroRunQC](https://github.com/estrain/MicroRunQC/blob/master/galaxy_workflows/MicroRunQC.ga) workflow. 
+Import the [MicroRunQC](https://github.com/estrain/MicroRunQC/blob/master/galaxy_workflows/MicroRunQC.ga) workflow. The workflow is intended for paired-collections of fastq files. 
 
 ## Dependencies for local installation
 
@@ -41,6 +41,9 @@ Install dependencies using [Conda](https://bioconda.github.io/user/install.html)
 % chmod a+x $HOME/MicroRunQC/bin/*
 % microrunqc.py --help
 ``` 
+## Example
+
+% microrunqc.py --forward forward_L001_R1_001.fastq.gz --reverse reverse_L001_R2_001.fastq.gz --cores 12 --output example
 
 ## Output
 
