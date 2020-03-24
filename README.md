@@ -33,7 +33,6 @@ Install dependencies using [Conda](https://bioconda.github.io/user/install.html)
 ```
 
 ## Install and setup from source
-
 ```
 % cd $HOME
 % git clone https://github.com/estrain/MicroRunQC.git
@@ -42,9 +41,9 @@ Install dependencies using [Conda](https://bioconda.github.io/user/install.html)
 % microrunqc.py --help
 ``` 
 ## Example
-
+```
 % microrunqc.py --forward forward.fastq.gz --reverse reverse.fastq.gz --cores 12 --output example
-
+```
 ## Output
 
 Output is a tab delimited file.
