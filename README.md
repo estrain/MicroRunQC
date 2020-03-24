@@ -32,7 +32,7 @@ Install dependencies using [Conda](https://bioconda.github.io/user/install.html)
 % conda install -c conda-forge -c bioconda -c defaults mlst skesa trimmomatic bwa fastq-scan
 ```
 
-## Install from source
+## Install and setup from source
 
 ```
 % cd $HOME
